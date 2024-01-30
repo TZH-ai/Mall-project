@@ -1,22 +1,13 @@
 <template>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Your Website</title>
-</head>
-
-
 <div class="top-navbar">
     <div class="container">
         <ul>
-                    <li><router-link to="/Home">Home</router-link></li>
+                    <li><router-link to="/Home" >Home</router-link></li>
                     <li><router-link to="/About">About</router-link></li>
                     <li><router-link to="/Services">Services</router-link></li>
                     <li><router-link to="/Contact">Contact</router-link></li>
         </ul>
+       
         <ul>
             <li><a href="#">登录</a></li>
             <li><a href="#">注册</a></li>
@@ -29,7 +20,6 @@
 
 <div class="container">
     <!-- Your website content goes here -->
-fff
     <header class="site-header">
     <div class="site-container">
     
@@ -52,7 +42,6 @@ fff
 </div>
 
 
-</html>
 
 
 

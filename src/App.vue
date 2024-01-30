@@ -10,7 +10,6 @@ import Primary from './components/Carousel.vue'
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <Home/>
       <div class="container">
-       
         <Primary/>
       </div>
 </template>

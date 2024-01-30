@@ -7,10 +7,10 @@
         :key="index"
         class="nav-item"
         @mouseover="showSubMenu(category)"
-        @mouseleave="hideSubMenu"
+       
       >
         {{ category.name }}
-        <div v-if="activeCategory === category" class="sub-menu">
+        <div v-if="activeCategory === category" class="sub-menu"  @mouseleave="hideSubMenu">
           <!-- 二级菜单内容，根据实际需要替换为你的内容 -->
           <div v-for="(subCategory, subIndex) in category.subCategories" :key="subIndex" class="sub-menu-nav">
             {{ subCategory }} 
