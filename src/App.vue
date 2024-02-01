@@ -3,7 +3,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import Home from './components/Header.vue'
 import Primary from './components/Carousel.vue'
-
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
@@ -11,7 +11,8 @@ import Primary from './components/Carousel.vue'
     <Home/>
       <div class="container">
         <Primary/>
-      </div>
+        <Footer/>
+      </div>  
 </template>
 
 <style scoped>

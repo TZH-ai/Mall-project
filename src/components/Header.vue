@@ -9,7 +9,7 @@
         </ul>
        
         <ul>
-            <li><a href="#">登录</a></li>
+            <li><a href="/login">登录</a></li>
             <li><a href="#">注册</a></li>
             <li><a href="#">消息通知</a></li>
             <li><a href="#">购物车</a></li>

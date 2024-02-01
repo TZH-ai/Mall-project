@@ -1,4 +1,5 @@
 <template>
+  
   <div class="carousel-container">
     <!-- 导航栏部分 -->
     <div class="nav-container">
