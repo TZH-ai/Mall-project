@@ -32,7 +32,7 @@
     <button @click="prevSlide" class="carousel-button prev-button">&lt;</button>
     <button @click="nextSlide" class="carousel-button next-button">&gt;</button>
   </div>
-</template>
+ </template>
 
 <script setup>
 import { ref } from 'vue';

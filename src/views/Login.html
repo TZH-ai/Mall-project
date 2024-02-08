@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Login.vue -->
+
+    <div class="login-container">
+      <div class="login-box">
+        <h2>Login</h2>
+        <form @submit.prevent="login">
+          <label for="username">Username:</label>
+          <input v-model="username" type="text" id="username" name="username" required>
+  
+          <label for="password">Password:</label>
+          <input v-model="password" type="password" id="password" name="password" required>
+  
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
+<script setup>
+    import {ref} from 'vue'
+    const username = ref('');
+    const password = ref('');
+    
+    const login = () => {
+      // 在这里处理登录逻辑，可以使用 Vue Router 进行页面跳转
+      console.log('Logging in with:', { username: username.value, password: password.value });
+      // 跳转到其他页面
+      // this.$router.push('/dashboard'); // 请确保已经配置了 Vue Router
+    };
+    </script>
+    
+<style scoped>
+    /* 样式可以根据需求进行调整 */
+    .login-container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 20px;
+    }
+    
+    .login-box {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h2 {
+      color: #333333;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    label {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    
+    input {
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      background-color: #4CAF50;
+      color: #ffffff;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+    </style>
+    

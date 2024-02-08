@@ -10,9 +10,11 @@ import Footer from './components/Footer.vue'
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <Home/>
       <div class="container">
-        <Primary/>
+        <!-- <Primary/> -->
+        <router-view></router-view>
         <Footer/>
       </div>  
+  
 </template>
 
 <style scoped>

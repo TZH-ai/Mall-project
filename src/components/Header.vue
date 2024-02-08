@@ -6,6 +6,8 @@
                     <li><router-link to="/About">About</router-link></li>
                     <li><router-link to="/Services">Services</router-link></li>
                     <li><router-link to="/Contact">Contact</router-link></li>
+                    <a href="../views/Login.html" target="_blank">External Link</a>
+                    <el-button type="danger" size="small" :icon="Edit">fff</el-button>
         </ul>
        
         <ul>
@@ -48,7 +50,7 @@
 </template>
     
 <script setup lang='ts'>
-    
+import {Edit} from "@element-plus/icons-vue"
 </script>
     
 <style >
