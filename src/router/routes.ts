@@ -31,3 +31,13 @@ export  const constantRoute=[
         component: () => import('@/views/Login.vue') 
       },
 ]
+
+export const anyRoute = {
+  path: '/:pathMatch(.*)*',
+  redirect: '/404',
+  name: 'Any',
+  meta: {
+    title: '任意路由',
+    hidden: true,
+  },
+}

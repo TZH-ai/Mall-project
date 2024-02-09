@@ -33,7 +33,7 @@
             </el-form-item>
 
           <el-form-item label="">
-            <el-button type="submit" @click="login">Login</el-button>
+            <el-button type="submit" @click="login" :loading="loading">Login</el-button>
           </el-form-item>
           </el-form></el-col
         >
@@ -43,25 +43,51 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref,reactive } from "vue";
 import { useRouter } from "vue-router";
 import {User,Lock} from "@element-plus/icons-vue"
-import  useUserStore from '@/stores/modules/user'
+import  useUserStore from '@/store/modules/user'
+import {ElNotification} from 'element-plus'
+import {getTime} from '@/utils/time'
 const username = ref("");
 const password = ref("");
-const router = useRouter();
+const $router = useRouter();
 let useStore =useUserStore()
+let loading=ref(false);
 
-const login = () => {
+const loginForm = reactive({
+  username: 'admin',
+  password: '111111',
+  verifyCode: '1234',
+})
+
+
+const login = async () => {
   console.log('333')
+  loading.value=true
   // 在这里处理登录逻辑，可以使用 Vue Router 进行页面跳转
-  console.log("Logging in with:", {
-    username: username.value,
-    password: password.value,
-  });
-
-
-  useStore.userLogin();
+  // console.log("Logging in with:", {
+  //   username: username.value,
+  //   password: password.value,
+  // });
+try {
+  await useStore.userLogin(loginForm);
+  $router.push('/Home');
+  ElNotification({
+    type:'success',
+    message:'欢迎回来',
+    title:`Hi,${getTime()}好`
+  })
+  loading.value=false
+} catch (error) {
+  ElNotification({
+    type:'error',
+    message:'登录失败'
+  })
+  loading.value=false
+}
+  
+ 
  
 };
 </script>
