@@ -78,17 +78,6 @@ export const constantRoute = [
           icon: 'HomeFilled',
         },
       },
-      //故意加个一样的路由
-      {
-        path: '/home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {
-          title: '首页',
-          hidden: false,
-          icon: 'HomeFilled',
-        },
-      },
-      //
     ],
   },
   {

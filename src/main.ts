@@ -9,6 +9,7 @@ import router from './router'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import pinia from './store'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import  './permisstion'
 const app = createApp(App)
 
 app.use(createPinia())

@@ -62,6 +62,13 @@ function filterAsyncRoute(asyncRoute: any, routes: any) {
           return Promise.reject(new Error(res.message))
         }
       },
+      userLogout(){
+        this.token='';
+        this.username='';
+        this.avatar='';
+        REMOVE_TOKEN();
+      
+      }
     },
     getters:{
 
