@@ -3,11 +3,11 @@
   <div class="login-container">
     <div class="login-box">
       <el-row>
-        <el-col :span="12" >ddd</el-col>
-        <el-col :span="12" >
+        <el-col :span="12">ddd</el-col>
+        <el-col :span="12">
           <h2>Login</h2>
-          <el-form >
-            <el-form-item label="">
+          <el-form :model="loginForm" :rules="rules" ref="loginForms">
+            <el-form-item label="" prop="username">
               <label for="username">Username:</label>
               <el-input
                 v-model="username"
@@ -19,7 +19,7 @@
               ></el-input>
             </el-form-item>
 
-            <el-form-item label="">
+            <el-form-item label="" prop="password">
               <label for="password">Password:</label>
               <el-input
                 v-model="password"
@@ -32,9 +32,11 @@
               />
             </el-form-item>
 
-          <el-form-item label="">
-            <el-button type="submit" @click="login" :loading="loading">Login</el-button>
-          </el-form-item>
+            <el-form-item label="">
+              <el-button type="submit" @click="login" :loading="loading"
+                >Login</el-button
+              >
+            </el-form-item>
           </el-form></el-col
         >
       </el-row>
@@ -43,52 +45,55 @@
 </template>
 
 <script setup>
-import { ref,reactive } from "vue";
+import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import {User,Lock} from "@element-plus/icons-vue"
-import  useUserStore from '@/store/modules/user'
-import {ElNotification} from 'element-plus'
-import {getTime} from '@/utils/time'
-const username = ref("");
-const password = ref("");
+import { User, Lock } from "@element-plus/icons-vue";
+import useUserStore from "@/store/modules/user";
+import { ElNotification } from "element-plus";
+import { getTime } from "@/utils/time";
+// const username = ref("");
+// const password = ref("");
 const $router = useRouter();
-let useStore =useUserStore()
-let loading=ref(false);
+let loginForms=ref()
+let useStore = useUserStore();
+let loading = ref(false);
 
 const loginForm = reactive({
-  username: 'admin',
-  password: '111111',
-  verifyCode: '1234',
-})
+  username: "admin",
+  password: "111111",
+  verifyCode: "1234",
+});
 
-
+const rules = {
+  username: [{require:true,message:'用户名不能为空',trigger:"blur"}],
+  password: [],
+};
 const login = async () => {
-  console.log('333')
-  loading.value=true
+  await loginForms.value.validate();
+
+  console.log("333");
+  loading.value = true;
   // 在这里处理登录逻辑，可以使用 Vue Router 进行页面跳转
   // console.log("Logging in with:", {
   //   username: username.value,
   //   password: password.value,
   // });
-try {
-  await useStore.userLogin(loginForm);
-  $router.push('/Home');
-  ElNotification({
-    type:'success',
-    message:'欢迎回来',
-    title:`Hi,${getTime()}好`
-  })
-  loading.value=false
-} catch (error) {
-  ElNotification({
-    type:'error',
-    message:'登录失败'
-  })
-  loading.value=false
-}
-  
- 
- 
+  try {
+    await useStore.userLogin(loginForm);
+    $router.push("/Home");
+    ElNotification({
+      type: "success",
+      message: "欢迎回来",
+      title: `Hi,${getTime()}好`,
+    });
+    loading.value = false;
+  } catch (error) {
+    ElNotification({
+      type: "error",
+      message: "登录失败",
+    });
+    loading.value = false;
+  }
 };
 </script>
 
@@ -109,7 +114,7 @@ try {
   position: relative;
   width: 80%;
   height: 80vh;
-  background:url('../img/loginbg.jpg') no-repeat;
+  background: url("../img/loginbg.jpg") no-repeat;
   background-size: cover;
   padding: 20px;
   text-align: center;
