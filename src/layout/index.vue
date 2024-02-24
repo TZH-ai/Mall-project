@@ -43,6 +43,7 @@ import useLayOutSettingStore from "@/store/modules/setting";
 let  userStore = useUserStore();
 let $router = useRoute();
 let LayOutSettingStore=useLayOutSettingStore();
+console.log(userStore.menuRoutes)
 </script>
     
 <style scoped lang="scss">
@@ -85,7 +86,6 @@ let LayOutSettingStore=useLayOutSettingStore();
     position: absolute;
     width: calc(100% - $base-menu-width);
     height: calc(100vh - $base-tabbar-height);
-    background-color: yellowgreen;
     left: $base-menu-width;
     top: $base-tabbar-height;
     padding: 20px;

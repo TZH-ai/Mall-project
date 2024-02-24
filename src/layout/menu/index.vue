@@ -39,8 +39,8 @@
 </template>
     
 <script setup lang='ts'>
-defineProps(["menuList"]);
 import { useRouter } from 'vue-router';
+defineProps(["menuList"]);
 let $router=useRouter()
 const goRoute=(vc:any)=>{
      console.log(vc.index)

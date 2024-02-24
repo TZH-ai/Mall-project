@@ -1,13 +1,6 @@
-<!--
- * @Description: Stay hungry，Stay foolish
- * @Author: Huccct
- * @Date: 2023-05-21 16:19:15
- * @LastEditors: Huccct
- * @LastEditTime: 2023-06-02 11:35:45
--->
 <script setup lang="ts">
 import { ref, onMounted, reactive, nextTick } from 'vue'
-
+import { ElMessage } from 'element-plus';
 import {
   reqHasTradeMark,
   reqAddOrUpdateTrademark,
@@ -18,7 +11,7 @@ import type {
   TradeMark,
   TradeMarkResponseData,
 } from '@/api/product/trademark/type'
-import { UploadProps } from 'element-plus/es/components/upload/src/upload'
+import type { UploadProps } from 'element-plus/es/components/upload/src/upload'
 
 let pageNo = ref<number>(1)
 
@@ -104,6 +97,7 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
     rawFile.type === 'image/gif'
   ) {
     if (rawFile.size / 1024 / 1024 < 4) {
+      console.log(trademarkParams)
       return true
     } else {
       ElMessage({

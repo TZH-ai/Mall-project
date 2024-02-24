@@ -1,12 +1,6 @@
-<!--
- * @Description: Stay hungry，Stay foolish
- * @Author: Huccct
- * @Date: 2023-05-21 16:18:38
- * @LastEditors: Huccct
- * @LastEditTime: 2023-05-27 23:22:03
--->
 <script setup lang="ts">
 import useCategoryStore from '@/store/modules/category'
+import { ElMessage } from 'element-plus';
 let categoryStore = useCategoryStore()
 import { watch, ref, reactive, nextTick, onBeforeUnmount } from 'vue'
 import { reqAttr, reqAddOrUpdateAttr, reqRemoveAttr } from '@/api/product/attr'
@@ -99,6 +93,7 @@ const toLook = (row: AttrValue, $index: number) => {
     if (item !== row) {
       return item.valueName === row.valueName
     }
+    
   })
   if (repeat) {
     attrParams.attrValueList.splice($index, 1)
@@ -140,6 +135,36 @@ onBeforeUnmount(() => {
 </script>
 <template>
   <def-category :scene="scene" />
+  <Category :scene="scene"></Category>
+  <!-- <el-card>
+    <el-form :inline="true">
+      <el-form-item label="一级菜单">
+        <el-select >
+          <el-option label="北京" ></el-option>
+          <el-option label="上海" ></el-option>
+          <el-option label="北京" ></el-option>
+          <el-option label="北京" ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="二级菜单">
+        <el-select >
+          <el-option label="北京" ></el-option>
+          <el-option label="上海" ></el-option>
+          <el-option label="北京" ></el-option>
+          <el-option label="北京" ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="三级菜单">
+        <el-select >
+          <el-option label="北京" ></el-option>
+          <el-option label="上海" ></el-option>
+          <el-option label="北京" ></el-option>
+          <el-option label="北京" ></el-option>
+        </el-select>
+      </el-form-item>
+      
+    </el-form>
+  </el-card> -->
   <el-card style="margin: 10px 0">
     <div v-show="scene === 0">
       <el-button

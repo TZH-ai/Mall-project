@@ -1,10 +1,3 @@
-<!--
- * @Description: Stay hungry，Stay foolish
- * @Author: Huccct
- * @Date: 2023-05-21 16:19:09
- * @LastEditors: Huccct
- * @LastEditTime: 2023-05-29 19:30:22
--->
 <script setup lang="ts">
 import { ref, watch, onBeforeUnmount } from 'vue'
 import useCategoryStore from '@/store/modules/category'
@@ -112,7 +105,8 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-  <def-category :scene="scene"></def-category>
+  <!-- <def-category :scene="scene"></def-category> -->
+  <Category :scene="scene"></Category>
   <el-card style="margin: 10px 0">
     <div v-show="scene === 0">
       <el-button

@@ -1,54 +1,83 @@
 //自己
 export  const MyconstantRoute=[
-    {
-        path: '/about',
-        name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (About.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import('@/views/AboutView.vue'),
-        meta:{
-          title:""
-        }
-      },
-      {
-        path:'/Home',
-        name:'Home',
-        component:()=>import('@/views/Home.vue')
-  
-      },
-      {
-        path:'/Services',
-        name:'Services',
-        component:()=>import('@/views/Services.vue')
-  
-      },
-      {
-        path:'/Contact',
-        name:'Contact',
-        component:()=>import('../views/Contact.vue')
-  
-      },
-      {
-        path: '/login',
-        name: 'Login',
-        component: () => import('@/views/Login.vue') ,
-        children:[
-          {
-            path:'/home',
-            component:()=>import('@/views/Home.vue')
-          }
-        ]
-      },
-      {
-        path: '/',
-        name: 'layout',
-        component: () => import('@/layout/index.vue') 
-      },
+  {
+    path: '/index',
+    component: () => import('@/views/user/index.vue'),
+    name: 'index',
+
+  },//test
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('@/views/AboutView.vue'),
+
+  },
+
+  {
+    path:'/services',
+    name:'Services',
+    component:()=>import('@/views/Services.vue')
+
+  },
+  {
+    path:'/contact',
+    name:'contact',
+    component:()=>import('../views/Contact.vue')
+
+  },
+  {
+    path:'/shop',
+    name:'shop',
+    component:()=>import('@/views/front/shop/index.vue')
+  },
+  {
+    path:'/userinfo',
+    name:'userinfo',
+    component:()=>import('@/views/front/userinfo/index.vue')
+  },
+  {
+    path:'/producdetail',
+    name:'producdetail',
+    component:()=>import('@/views/front/productDetail/index.vue')
+  }
 ]
 
 //sgg
 export const constantRoute = [
+  // {
+  //   path: '/index',
+  //   component: () => import('@/views/user/index.vue'),
+  //   name: 'index',
+  //   meta: {
+  //     title: '登录',
+  //     hidden: true,
+  //   },
+  // },//test
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: () => import('@/views/AboutView.vue'),
+  //   meta:{
+  //     title:"",
+  //     hidden: true,
+  //   }
+  // },
+
+  // {
+  //   path:'/Services',
+  //   name:'Services',
+  //   component:()=>import('@/views/Services.vue')
+
+  // },
+  // {
+  //   path:'/Contact',
+  //   name:'Contact',
+  //   component:()=>import('../views/Contact.vue')
+
+  // },
+
+
+
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),

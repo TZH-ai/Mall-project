@@ -1,5 +1,5 @@
-
 <script setup lang="ts">
+import {ElMessage} from 'element-plus'
 import { ref, onMounted } from 'vue'
 import {
   reqSkuList,
@@ -63,6 +63,7 @@ const findSku = async (row: SkuData) => {
   drawer.value = true
   let res: SkuInfoData = await reqSkuInfo(row.id as number)
   skuInfo.value = res.data
+  console.log(row)
 }
 
 const removeSku = async (id: number) => {
@@ -170,7 +171,7 @@ const removeSku = async (id: number) => {
           <el-col :span="6">描述</el-col>
           <el-col :span="18">{{ skuInfo.skuDesc }}</el-col>
         </el-row>
-        <el-row style="margin: 10px 0">
+        <el-row style="margin: 10px 0"> 
           <el-col :span="6">价格</el-col>
           <el-col :span="18">{{ skuInfo.price }}</el-col>
         </el-row>
