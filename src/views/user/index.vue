@@ -4,7 +4,7 @@
     <!-- Your website content goes here -->
     <header class="site-header">
       <div class="site-container">
-        <img src="" alt="" class="logo" />
+        <img src="../../../public//favicon.ico" alt="" class="logo" />
         <nav>
           <ul class="categoryNav">
             <li><a href="#">Home</a></li>
@@ -112,7 +112,6 @@ const toShop=(val:any)=>{
 
 .channel-list {
   height: 170px;
-  background-color: red;
   position: relative;
   display: flex;
   margin-top: 20px;
@@ -222,7 +221,6 @@ const toShop=(val:any)=>{
   right: 10px;
 }
 .site-header {
-  background-color: #4caf50;
   padding: 20px;
   text-align: center;
   color: white;
@@ -240,8 +238,6 @@ const toShop=(val:any)=>{
   list-style: none;
   margin: 0;
   padding: 0;
-
-  background-color: burlywood;
 }
 
 .site-header li {
@@ -251,7 +247,7 @@ const toShop=(val:any)=>{
 
 .site-header a {
   text-decoration: none;
-  color: white;
+
   font-weight: bold;
   font-size: 18px;
 }
@@ -265,7 +261,6 @@ const toShop=(val:any)=>{
   padding: 20px;
 }
 .logo {
-  background-color: red;
   width: 100px;
   height: 100px;
 }

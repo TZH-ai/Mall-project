@@ -32,7 +32,6 @@
     
 <script setup lang='ts'>
 import useCategoryStore from "@/store/modules/category";
-import { ca } from "element-plus/es/locale";
 import { onMounted, ref } from "vue";
 let categoryStore = useCategoryStore();
 defineProps(['scene']);

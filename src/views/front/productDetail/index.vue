@@ -51,7 +51,7 @@
         </el-row>
         <el-row>
             <el-col :span="6"> </el-col>
-            <el-col :span="16"><button @click="addToCart">加入购物车</button></el-col>
+            <el-col :span="16"><button @click="addToCart(data)">加入购物车</button></el-col>
           </el-row>
     </div>
   </div>
@@ -59,6 +59,7 @@
   
   <script setup lang="ts">
   import { useRoute,useRouter } from 'vue-router';
+  import useCartStore from '@/store/modules/cart';
   import axios from 'axios';
   import {ref,onMounted} from 'vue';
   import {
@@ -72,27 +73,25 @@ import type {
 } from '@/api/product/sku/type'
   const router=useRouter();
   const route = useRoute();
-  let data=ref<SkuData[]>([])
+  let data=ref({})
+  let cart=ref([])
+  let cartStore=useCartStore();
   const productId = parseInt(route.params.id);
   onMounted(async()=>{
     let productId=router.currentRoute.value.query.id;
     let res =await reqSkuInfo(productId);
     if(res.code==200){
       data.value=res.data
-      console.log(res)
+      console.log('xxx',res.data)
+      // console.log('datade',data.value)
     }
   })
-  // 假设这里有一个从后端获取商品详情的函数
-//   const product = getProductDetail(productId);
   console.log(router.currentRoute.value.query.id)
-  const addToCart = () => {
-    axios.get('/api/product').then(res => {
-    console.log('tt',res)
-  })
-    .catch((err) => {
-      console.log(err);
-    });
+  const addToCart = (data:any) => {
+     router.push('/cart')
+     cartStore.addCart(data)
   };
+
   </script>
   <style scoped>
   .product-detail {

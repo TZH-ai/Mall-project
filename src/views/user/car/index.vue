@@ -3,8 +3,9 @@
     <div v-for="item in products" :key="item.id" class="card-item"  @click="goToDetail(item.id)">
       <img :src="item.skuDefaultImg" alt="" class="card-img" />
       <div class="card-content">
-        <h3>{{  item.name}}</h3>
-        <p>{{  item.subtitle}}</p>
+        <h3>{{  item.skuName}}</h3>
+        <p>{{  item.skuDesc}}</p>
+        <p class="price">{{ item.price}}元</p>
       </div>
     </div>
   </el-card>
@@ -54,7 +55,7 @@ const goToDetail=(productId:number)=>{
 }
 </script>
     
-<style>
+<style lang="scss" scoped>
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -103,12 +104,23 @@ const goToDetail=(productId:number)=>{
 .card-content {
   padding: 14px;
   text-align: left;
+  p{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+  .price{
+    color: #ff6700;;
+  }
 }
 
 .card-content h3 {
   margin: 5px 0;
   font-size: 16px;
   color: #303133;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content p {

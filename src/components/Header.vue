@@ -1,5 +1,9 @@
 <template>
-  <div class="top-navbar" :class="isFixed ? 'is-fixed' : 'title'" ref="fixedName">
+  <div
+    class="top-navbar"
+    :class="isFixed ? 'is-fixed' : 'title'"
+    ref="fixedName"
+  >
     <div class="container">
       <ul>
         <li><router-link to="/index">Home</router-link></li>
@@ -14,58 +18,68 @@
         <li><a href="/login">登录</a></li>
         <li><a href="#">注册</a></li>
         <li><a href="#">消息通知</a></li>
-         <el-icon size="30" color="red">
-          <ShoppingCart></ShoppingCart>
-         </el-icon>
-        <li><a href="#">购物车</a></li>
+        <el-icon size="30" color="red">
+          <ShoppingCart v-show="cartStore.cartList.length==0"></ShoppingCart>
+          <ShoppingCartFull v-show="cartStore.cartList.length!=0"></ShoppingCartFull>
+        </el-icon>
+        <li><a @click="goCart">购物车</a></li>
       </ul>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 import { Edit } from "@element-plus/icons-vue";
-
+import { useRouter } from "vue-router";
+import useCartStore from "@/store/modules/cart";
+const cartStore=useCartStore();
+let router = useRouter();
 let isFixed = ref(false);
 let fixedName = ref(null);
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener("scroll", handleScroll);
 });
-
+console.log( cartStore.cartList.length)
 const handleScroll = () => {
   let scrollTop =
-    window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-  isFixed.value = scrollTop > fixedName.value.getBoundingClientRect().top ? true : false;
-}
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+  isFixed.value =
+    scrollTop > fixedName.value.getBoundingClientRect().top ? true : false;
+};
+const goCart = () => {
+  router.push("/cart");
+};
 </script>
 
 <style scoped lang="scss">
 //不吸顶
 .title {
-    // font-size: 30px;
-    // font-weight: 500;
-    color: #222222;
-    line-height: 60px;
-    text-align: center;
-  }
+  // font-size: 30px;
+  // font-weight: 500;
+  color: #222222;
+  line-height: 60px;
+  text-align: center;
+}
 //吸顶
-  .is-fixed {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    // font-size: 30px;
-    // font-weight: 500;
-    // color: #222222;
-    // line-height: 80px;
-    // text-align: center;
-    width: 100%;
-    // height: 80px;
-    // background-color: #fff;
-  }
-.submenu{
-  position:absolute;
+.is-fixed {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  // font-size: 30px;
+  // font-weight: 500;
+  // color: #222222;
+  // line-height: 80px;
+  // text-align: center;
+  width: 100%;
+  // height: 80px;
+  // background-color: #fff;
+}
+.submenu {
+  position: absolute;
   width: max-content;
   display: none;
 }
@@ -166,7 +180,6 @@ body {
   max-width: 1228px;
   margin: 0 auto;
 }
-
 
 .main-content {
   padding: 20px;

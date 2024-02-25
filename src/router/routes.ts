@@ -39,6 +39,10 @@ export  const MyconstantRoute=[
     path:'/producdetail',
     name:'producdetail',
     component:()=>import('@/views/front/productDetail/index.vue')
+  },{
+    path:'/cart',
+    name:'cart',
+    component:()=>import('@/views/front/cart/index.vue')
   }
 ]
 
