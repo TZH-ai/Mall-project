@@ -12,8 +12,13 @@ let useCartStore=defineStore('Cart',{
       //   console.log("调用了add",obj)
       // },
       addCart(obj:any){
-        this.cartList.push(obj)
-        console.log("调用了add",obj)
+        const exists = this.cartList.find(item => item.id === obj.id);
+        if(exists){
+          exists.cnt++;
+        }else{
+          this.cartList.push({...obj,cnt:1})
+        }
+       
       },
       getCart(){
         return this.cartList
@@ -22,3 +27,4 @@ let useCartStore=defineStore('Cart',{
     getters:{},
 })
 export default useCartStore;
+

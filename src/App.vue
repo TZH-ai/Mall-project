@@ -25,7 +25,7 @@ import Siderbar from '@/components/sidebar/index.vue'
         <!-- <Footer/> -->
       </div>  
       <router-view></router-view>
-      <Siderbar></Siderbar>
+      <!-- <Siderbar></Siderbar> -->
 </template>
 
 <style scoped>

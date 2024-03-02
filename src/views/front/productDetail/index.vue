@@ -89,6 +89,7 @@ import type {
   console.log(router.currentRoute.value.query.id)
   const addToCart = (data:any) => {
      router.push('/cart')
+     
      cartStore.addCart(data)
   };
 

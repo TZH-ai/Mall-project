@@ -43,7 +43,7 @@ EventBus.on("search", (val: any) => {
 // ];
 const products=ref<SkuData[]>([])
 const getProductList=async()=>{
- let res=await reqSkuList(1,8);
+ let res=await reqSkuList(2,12);
  if(res.code===200){
     console.log(res.data.records)
    products.value= res.data.records

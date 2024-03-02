@@ -120,14 +120,14 @@ const toShop=(val:any)=>{
   .channel-left {
     display: flex;
     flex-direction: column;
-    text-align: center; /* 文字居中 */
-    align-items: center; /* 垂直居中 */
+    text-align: center; 
+    align-items: center; 
     justify-content: center;
     li {
-      width: calc(33.33% - 20px); /* 每行三个，减去间距 */
-      margin: 10px; /* 间距 */
-      text-align: center; /* 文字居中 */
-      align-items: center; /* 垂直居中 */
+      width: calc(33.33% - 20px);
+      margin: 10px; 
+      text-align: center; 
+      align-items: center; 
     }
   }
 }

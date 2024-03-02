@@ -11,16 +11,32 @@
         <li><router-link to="/services">Services</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
         <a href="../views/Login.html" target="_blank">External Link</a>
-        <el-button type="danger" size="small" :icon="Edit">fff</el-button>
       </ul>
 
       <ul>
-        <li><a href="/login">登录</a></li>
-        <li><a href="#">注册</a></li>
+        <li v-if="userStore.username" class="test">
+          
+          <a href="/login">
+            <el-dropdown>
+      
+      {{ userStore.username }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
+
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item :icon="Plus" @click="layout">退出登录</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
+
+        </a></li>
+        <li v-else><a href="/login">登录</a></li>
+        <li><a href="#" v-show="!userStore.username">注册</a></li>
         <li><a href="#">消息通知</a></li>
         <el-icon size="30" color="red">
-          <ShoppingCart v-show="cartStore.cartList.length==0"></ShoppingCart>
-          <ShoppingCartFull v-show="cartStore.cartList.length!=0"></ShoppingCartFull>
+          <ShoppingCart v-show="cartStore.cartList.length == 0"></ShoppingCart>
+          <ShoppingCartFull
+            v-show="cartStore.cartList.length != 0"
+          ></ShoppingCartFull>
         </el-icon>
         <li><a @click="goCart">购物车</a></li>
       </ul>
@@ -30,18 +46,30 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import useUserStore from "@/store/modules/user";
 import { Edit } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import useCartStore from "@/store/modules/cart";
-const cartStore=useCartStore();
+import {
+  ArrowDown,
+  Check,
+  CircleCheck,
+  CirclePlus,
+  CirclePlusFilled,
+  Plus,
+} from '@element-plus/icons-vue'
+import { ElMessage } from "element-plus";
+const cartStore = useCartStore();
+const userStore=useUserStore();
 let router = useRouter();
 let isFixed = ref(false);
 let fixedName = ref(null);
 
 onMounted(() => {
+  userStore.userInfo();
   window.addEventListener("scroll", handleScroll);
 });
-console.log( cartStore.cartList.length)
+console.log(cartStore.cartList.length);
 const handleScroll = () => {
   let scrollTop =
     window.pageYOffset ||
@@ -53,9 +81,36 @@ const handleScroll = () => {
 const goCart = () => {
   router.push("/cart");
 };
+const layout=()=>{
+   userStore.userLogout();
+   router.push('/login')
+   ElMessage({
+    type:'success',
+    message:'退出成功'
+   })
+}
 </script>
 
 <style scoped lang="scss">
+.block-col-2 .demonstration {
+  display: block;
+  color: var(--el-text-color-secondary);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.top-navbar ul {
+  list-style: none;
+  display: flex; /* 使用 flex 布局 */
+  align-items: center; /* 垂直居中对齐 */
+  margin: 0;
+  padding: 0;
+}
+
+
+.block-col-2 .el-dropdown-link {
+  display: flex;
+  align-items: center;
+}
 //不吸顶
 .title {
   // font-size: 30px;
@@ -193,4 +248,17 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+
+.cart-item {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+
 </style>
