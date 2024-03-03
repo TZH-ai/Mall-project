@@ -99,8 +99,8 @@ export const constantRoute = [
       title: 'layout',
       hidden: false,
       icon: 'HomeFilled',
-    },
-    redirect: '/home',
+    },    
+    redirect: '/index',
     children: [
       {
         path: '/home',

@@ -3,9 +3,13 @@
 This template should help get you started developing with Vue 3 in Vite.
 
 ![image](./public//img/1.png)
-![image](./public//img/2.png)
-![image](./public//img/3.png)
 
+![image](./public//img/2.png)
+
+![image](./public//img/6.png)
+
+后台是b站上的硅谷甄选
+![image](./public/img/4.png)
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).

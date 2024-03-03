@@ -29,11 +29,12 @@ let text = ref("");
 const router=useRouter();
 onMounted(() => {
   getProductList();
-})
+})                            
 import EventBus from "@/utils/event-bus";
 EventBus.on("search", (val: any) => {
   text.value = val;
   console.log("获取的值val", val);
+  products.value=products.value.filter((item)=>item.skuName.includes(val))
 });
 // const products = [
 //   { id: 1, name: '商品1', subtitle: '这是商品1的小标题', price: 100, image: '../../../img/bj.jpg' },
